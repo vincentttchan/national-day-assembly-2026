@@ -1,0 +1,212 @@
+:root{--paper:#f3efdf;--ink:#25241f;--red:#782c32;--gold:#a28b52;--muted:#6e6a5d;--line:#d5cbb0;--white:#fffdf7;font-family:'Assembly Sans TC','Noto Sans TC Complete','PingFang TC','Microsoft JhengHei',sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}button{cursor:pointer}a{color:inherit;text-underline-offset:4px}button:disabled{cursor:default;opacity:.35}:focus-visible{outline:3px solid var(--red);outline-offset:4px}button{color:inherit}h1,h2,h3,p{margin:0}button{border:0;background:none}small{display:block}.serif,h1,h2,h3{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif}.muted{color:var(--muted)}.primary{background:var(--red);color:#fff;padding:15px 24px;border-radius:6px;font-weight:600}.secondary{border:1px solid var(--line);padding:14px 24px;border-radius:6px}.error{color:var(--red);line-height:1.7;margin:16px 0}.notice{color:var(--muted);line-height:1.8;margin-top:18px}.hidden{display:none!important}
+/* A 1600 × 900 canvas keeps the stage legible on auditorium screens. */
+.presentation{height:100dvh;overflow:hidden;background:#e5e0d0;display:grid;place-items:center}.stage{width:1600px;height:900px;background:var(--paper);position:absolute;transform-origin:center center;overflow:hidden}.slide-header{position:absolute;left:100px;right:100px;top:62px;display:flex;justify-content:space-between;align-items:center}.slide-header img{width:82px;height:76px;object-fit:contain}.slide-header>div{text-align:right;font-size:20px;letter-spacing:2px;color:var(--muted);line-height:1.8}.slide-header span{display:block;letter-spacing:3px;font-size:17px;color:var(--gold)}.slide-footer{position:absolute;left:100px;right:100px;bottom:63px;display:flex;justify-content:space-between;color:var(--muted);font-size:18px;letter-spacing:2px}.slide-footer strong{color:var(--ink);font-weight:500}#section-label{color:var(--gold)}.slide{position:absolute;left:100px;right:100px;top:203px;bottom:140px}.section-number{font-size:21px;color:var(--red);letter-spacing:4px;margin-bottom:32px}.section-number span{color:var(--muted);letter-spacing:2px;margin-left:23px}.cover .section-number{margin-bottom:24px}.cover-title{font-size:114px;line-height:1.32;font-weight:700;letter-spacing:8px}.cover-bottom{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:30px;margin-top:34px;color:var(--muted);letter-spacing:4px}.cover-date{position:absolute;right:0;top:53px;width:325px;padding-left:55px;border-left:1px solid var(--gold);height:390px;display:flex;flex-direction:column;justify-content:center}.cover-date .year{color:var(--gold);font-size:26px;letter-spacing:6px}.cover-date .date{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:63px;line-height:1.5;margin:25px 0}.cover-date .school{font-size:21px;line-height:1.8;color:var(--muted)}.title-slide{display:flex;flex-direction:column;justify-content:center;padding-bottom:30px}.title-slide h1{font-size:104px;line-height:1.35;letter-spacing:5px;font-weight:700}.title-slide .lead{font-size:32px;line-height:1.8;letter-spacing:3px;margin-top:39px;color:var(--muted)}.title-slide .speaker{margin-top:38px;color:var(--red);font-size:35px;letter-spacing:3px}.talk h1{font-size:86px}.quiet-mark{position:absolute;right:60px;top:54px;border-right:2px solid var(--gold);height:335px}.flag .lead{color:var(--red)}.agenda h1,.activities h1{font-size:55px;letter-spacing:4px;margin-bottom:34px}.agenda .section-number,.activities .section-number{margin-bottom:20px}.agenda-list{display:grid;grid-template-columns:1fr 1fr;column-gap:90px}.agenda-item{display:grid;grid-template-columns:64px 1fr auto;align-items:center;border-top:1px solid var(--line);padding:24px 0;gap:15px;font-size:29px}.agenda-item .num{color:var(--gold);font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:32px}.agenda-item .duration{font-size:22px;color:var(--muted)}.agenda-note{font-size:21px;color:var(--muted);margin-top:24px}.activity-list{display:flex;flex-direction:column}.activity-row{border-top:1px solid var(--line);display:grid;grid-template-columns:230px 1fr;gap:35px;padding:25px 0}.activity-date{font-size:25px;color:var(--red);line-height:1.7}.activity-date strong{display:block;font-size:29px;font-weight:500}.activity-row h2{font-size:34px;line-height:1.5;font-weight:600}.activity-row p{font-size:20px;color:var(--muted);margin-top:12px;line-height:1.7}.activity-row.feature{border-top:2px solid var(--gold)}.activity-row.feature h2{font-size:42px}.poster-button{position:absolute;bottom:-35px;right:0;font-size:20px;color:var(--red);border-bottom:1px solid var(--red);padding:5px 0}.upcoming .activity-row{padding:30px 0}.upcoming .activity-row h2{font-size:40px}.upcoming .activity-row p{font-size:24px}.quiz-slide{display:grid;grid-template-columns:1fr 410px;gap:60px;align-items:center}.quiz-slide h1{font-size:80px;letter-spacing:4px}.quiz-slide .lead{font-size:32px;line-height:1.8;margin-top:35px}.quiz-slide .sublead{font-size:24px;color:var(--muted);margin-top:24px;line-height:1.8}.quiz-code{text-align:center;align-self:center}.quiz-code img{width:370px;height:370px;background:#fff;border:1px solid var(--line)}.quiz-code a{font-size:21px;display:block;margin-top:22px;color:var(--red)}.quiz-status{margin-top:22px;font-size:23px;color:var(--muted)}.quiz-status strong{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:48px;display:block;color:var(--red);font-variant-numeric:tabular-nums}.ending h1{font-size:104px;letter-spacing:7px}.ending .lead{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:42px;color:var(--red)}
+.deck-controls{position:fixed;bottom:13px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid #c9bea0;border-radius:50px;background:#f3efdfed;font-size:13px;z-index:10}.deck-controls button{min-width:32px;min-height:32px;border-radius:50%;padding:4px}.deck-controls #previous,.deck-controls #next{font-size:25px;line-height:1}.deck-controls #next{background:var(--red);color:white}.deck-controls #page-menu{font-size:12px;min-width:70px;border-radius:0}.control-separator{height:17px;border-right:1px solid var(--line);margin:0 5px}.deck-controls a{font-size:12px;text-decoration:none;padding:0 8px}.controls-hidden .deck-controls{display:none}dialog{border:1px solid var(--line);background:var(--white);padding:28px;border-radius:12px;max-width:520px;width:calc(100% - 32px);color:var(--ink)}dialog::backdrop{background:#25241f66}.dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.dialog-head h2{font-size:25px}.close-dialog{font-size:30px;min-width:40px;min-height:40px}.page-link{display:block;width:100%;text-align:left;padding:12px 10px;border-top:1px solid var(--line);font-size:17px}.page-link.current{color:var(--red);font-weight:600}#pages-dialog p{font-size:12px;margin-top:20px}.poster-dialog{padding:0;width:auto;max-width:90vw;max-height:95dvh;overflow:auto;background:white;border-radius:0}.poster-dialog img{display:block;max-height:90dvh;max-width:90vw}.poster-close{position:fixed;right:20px;top:10px;background:var(--white);border:1px solid var(--line);border-radius:50%;z-index:20}
+/* Student screens retain the same identity, with touch sized answer controls. */
+.student-page{min-height:100dvh}.student-header{display:flex;align-items:center;justify-content:space-between;padding:23px 32px;border-bottom:1px solid var(--line);gap:20px}.student-header a{display:flex;align-items:center;gap:13px;text-decoration:none;font-size:16px;font-weight:500}.student-header img{width:43px;height:42px;object-fit:contain}.student-header small{font-size:11px;color:var(--muted);font-weight:400;margin-top:5px}.student-header>span{font-size:14px;color:var(--red);white-space:nowrap}.quiz-root{max-width:780px;margin:0 auto;padding:58px 28px 50px}.intro-label{font-size:14px;letter-spacing:2px;color:var(--gold);margin-bottom:20px}.intro h1{font-size:48px;letter-spacing:2px;line-height:1.5}.intro .lead{color:var(--muted);font-size:17px;line-height:1.9;margin-top:20px;max-width:570px}.identity-form{margin-top:38px}.identity-form label{display:block;font-size:15px;margin-bottom:12px}.grade-buttons{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.grade-buttons button{background:var(--white);border:1px solid var(--line);border-radius:5px;padding:13px 0;font-size:16px}.grade-buttons button[aria-pressed=true]{border-color:var(--red);background:var(--red);color:white}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}.form-row input,.login-form input{width:100%;padding:13px 15px;border:1px solid var(--line);background:var(--white);border-radius:5px;font-size:18px;color:var(--ink)}.identity-form>.primary{margin-top:28px;width:100%}.waiting h1,.complete h1{font-size:43px;margin-top:28px;line-height:1.5}.waiting p,.complete p{font-size:18px;line-height:1.9;color:var(--muted);margin-top:24px}.waiting .waiting-line,.complete .receipt-line{width:70px;border-top:3px solid var(--gold);margin:30px 0}.question-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}.question-progress{font-size:15px;color:var(--muted)}.timer{font-variant-numeric:tabular-nums;font-size:28px;font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;color:var(--red)}.timer small{display:inline;font-family:'Assembly Sans TC','Noto Sans TC Complete','PingFang TC','Microsoft JhengHei',sans-serif;font-size:12px;color:var(--muted);margin-right:10px}.question-tabs{display:flex;gap:10px;margin-bottom:32px}.question-tab{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;font-size:14px}.question-tab.answered{background:#e6dfc8;border-color:var(--gold)}.question-tab[aria-current=true]{background:var(--red);border-color:var(--red);color:white}.question-kind{font-size:13px;color:var(--red);margin-bottom:12px}.question-title{font-size:27px;line-height:1.65;font-family:'Assembly Sans TC','Noto Sans TC Complete','PingFang TC','Microsoft JhengHei',sans-serif;font-weight:600;margin-bottom:25px}.options{display:flex;flex-direction:column;gap:11px}.option{display:grid;grid-template-columns:30px 1fr 22px;gap:12px;align-items:center;padding:18px;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:7px;line-height:1.8;font-size:17px;min-height:64px}.option[aria-pressed=true]{background:#eee0d7;border-color:var(--red)}.option-letter{font-size:18px;font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;color:var(--gold)}.option[aria-pressed=true] .option-letter{color:var(--red)}.option-indicator{width:18px;height:18px;border:1px solid var(--line);border-radius:50%}.multiple .option-indicator{border-radius:3px}.option[aria-pressed=true] .option-indicator{background:var(--red);border-color:var(--red);position:relative}.option[aria-pressed=true] .option-indicator:after{content:'✓';color:white;font-size:12px;position:absolute;line-height:16px;inset:0;text-align:center}.quiz-navigation{display:flex;justify-content:space-between;gap:15px;margin-top:28px}.quiz-navigation button{flex:1}.save-status{font-size:12px;color:var(--muted);margin-top:16px;min-height:20px}.review h1{font-size:38px;line-height:1.5;margin:25px 0}.review-list{margin-top:25px}.review-row{display:flex;justify-content:space-between;gap:20px;width:100%;padding:17px 0;border-top:1px solid var(--line);text-align:left}.review-row span:last-child{color:var(--red)}.review .quiz-navigation{margin-top:30px}.complete .receipt{font-size:15px;border-top:1px solid var(--line);padding-top:20px;margin-top:32px;color:var(--muted)}
+.admin-header{padding:25px 35px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}.admin-header a{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;text-decoration:none;font-size:20px}.admin-header span{color:var(--red)}.admin-root{max-width:1000px;margin:auto;padding:45px 28px}.login{max-width:430px;margin:45px auto}.login h1{font-size:36px;margin-bottom:25px}.login-form label{display:block;margin-bottom:13px}.login-form button{width:100%;margin-top:23px}.admin-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.admin-heading h1{font-size:34px}.admin-heading button{color:var(--muted);text-decoration:underline}.event-control{margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0;display:flex;justify-content:space-between;gap:24px;align-items:center}.event-control p{color:var(--muted);margin-top:10px;font-size:14px;line-height:1.8}.admin-status{font-size:26px;color:var(--red)}.grade-filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}.grade-filter button{padding:11px 22px;border:1px solid var(--line);border-radius:5px}.grade-filter button[aria-pressed=true]{background:var(--red);color:white;border-color:var(--red)}.table-wrap{overflow-x:auto;margin-top:24px}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:16px;text-align:left}th{font-weight:500;color:var(--muted);font-size:13px}th,td{padding:18px 15px;border-bottom:1px solid var(--line)}td:first-child{font-weight:600}.admin-table-note{font-size:13px;color:var(--muted);line-height:1.9;margin-top:20px}.export-link{display:inline-block;margin-top:25px;color:var(--red);font-size:14px}.empty-state{padding:55px 10px;color:var(--muted);text-align:center}.admin-error{margin-top:20px}.network-notice{border-left:3px solid var(--red);padding-left:12px;color:var(--red);font-size:14px;line-height:1.8;margin:15px 0}
+@media(max-width:600px){.student-header{padding:16px 20px}.student-header a{font-size:14px}.student-header img{width:35px;height:35px}.student-header>span{font-size:12px}.quiz-root{padding:33px 20px 40px}.intro h1{font-size:36px}.intro .lead{font-size:15px}.grade-buttons{grid-template-columns:repeat(3,1fr)}.form-row{gap:12px}.question-title{font-size:23px}.option{font-size:15px;padding:14px;grid-template-columns:24px 1fr 18px;gap:10px}.question-tabs{margin-bottom:24px}.question-tab{width:35px;height:35px}.waiting h1,.complete h1{font-size:32px}.admin-root{padding:28px 20px}.admin-header{padding:20px}.admin-heading h1{font-size:26px}.event-control{align-items:flex-start;flex-direction:column}.grade-filter{gap:7px}.grade-filter button{padding:9px 16px}th,td{padding:16px 12px}.deck-controls{bottom:5px;font-size:11px;gap:0}}
+@media(prefers-reduced-motion:no-preference){.slide{animation:slide-in .28s ease-out}@keyframes slide-in{from{opacity:.25}to{opacity:1}}.option,.grade-buttons button{transition:background .12s,border-color .12s}}
+
+/* Student waiting and connection states. */
+.upcoming .activity-list{max-width:1060px}.upcoming .activity-row{grid-template-columns:180px 1fr;gap:25px}.upcoming .activity-row h2{font-size:38px}.waiting-edit{margin-top:32px;color:var(--red);font-size:15px;border-bottom:1px solid var(--line);padding:8px 0}.identity-edit-title{font-size:35px!important}.question-top{position:sticky;top:0;background:var(--paper);z-index:3;padding:10px 0}.connection-error{color:var(--red)}.presentation-offline{font-size:20px;color:var(--red);line-height:1.7}.staff-note{font-size:14px;color:var(--muted);line-height:1.8;padding:15px 0;border-top:1px solid var(--line)}
+
+.student-page h1,.student-page h2,.student-page h3,.student-page .timer,.student-page .option-letter{font-family:'Assembly Sans TC','Noto Sans TC Complete','PingFang TC','Microsoft JhengHei',sans-serif}
+
+/* Selected visual direction: illustrated pages, mountains and the city. */
+:root{--paper:#fcf7ec;--white:#fffdf7;--ink:#302c28;--red:#800e26;--gold:#ac7b37;--muted:#62564a;--line:#dccab0}
+.presentation{background:#e9e2d4}.stage{background:var(--paper)}
+.canvas-art{position:absolute;inset:0;width:1600px;height:900px;object-fit:cover;pointer-events:none;z-index:0}
+.support-art{position:absolute;object-fit:contain;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+.slide-header,.slide-footer,.slide{z-index:1}
+.slide-header{left:64px;right:64px;top:54px;align-items:flex-start}
+.school-brand{display:flex;gap:24px;align-items:center}
+.slide-header img{width:94px;height:94px}
+.slide-header .school-name{text-align:left;color:var(--ink);font-size:29px;font-weight:600;line-height:1.55;letter-spacing:2px}
+.slide-header .school-name span{color:var(--ink);font-size:24px;font-weight:400;letter-spacing:3px}
+.slide-header .header-date{font-size:22px;text-align:right;letter-spacing:2px;color:var(--muted);padding-top:19px}
+.slide-footer{left:64px;right:64px;bottom:58px;font-size:23px;color:var(--ink);letter-spacing:2px}
+.slide-footer strong{font-weight:500}#section-label{display:none}
+.slide{left:64px;right:64px;top:196px;bottom:112px}
+.section-number{font-size:22px;letter-spacing:2px;margin-bottom:28px;color:var(--gold)}
+.section-number span{color:var(--muted);letter-spacing:1px;margin-left:18px}
+.stage[data-kind=cover] .header-date{display:none}
+.stage[data-kind=cover] .slide-footer{bottom:75px;font-size:26px}
+.cover{top:185px;bottom:115px}
+.cover-year{font-size:37px;letter-spacing:7px;color:var(--gold);margin-bottom:5px}
+.cover-title{color:var(--red);font-size:140px;letter-spacing:4px;line-height:1.15;font-weight:700;width:600px}
+.cover-title::first-line{font-size:174px;line-height:1.2}
+.cover-bottom{width:530px;border-top:2px solid var(--gold);padding-top:13px;margin-top:20px;font-size:42px;line-height:1.5;letter-spacing:4px;color:#8c5c25;font-weight:600;white-space:nowrap}
+.cover-date-line{position:absolute;top:540px;left:0;font-size:28px;letter-spacing:2px;color:var(--ink)}
+.title-slide{top:225px;bottom:155px;max-width:730px;justify-content:center;padding-bottom:0}
+.title-slide h1{font-size:122px;line-height:1.25;letter-spacing:3px;color:var(--red)}
+.title-slide .lead{font-size:36px;line-height:1.75;letter-spacing:2px;color:var(--ink);margin-top:30px}
+.title-slide .speaker{font-size:36px;color:#8c5c25;margin-top:30px;letter-spacing:2px}
+.talk h1{font-size:100px;line-height:1.35}.talk .section-number{margin-bottom:30px}
+.ritual-art{opacity:.38}.flag h1{font-size:142px}.flag .lead{color:var(--ink)}
+.community-art{left:740px;top:192px;width:885px;height:723px}
+.welcome h1{font-size:122px}.principal h1{font-size:119px}
+.ending h1{font-size:126px}.ending .lead{font-size:43px;color:#8c5c25;line-height:1.65}
+.agenda{top:200px;max-width:865px}.agenda h1{font-size:66px;margin-bottom:30px;color:var(--red);letter-spacing:2px}
+.agenda .section-number{margin-bottom:17px}.agenda-list{display:block;width:845px}
+.agenda-item{grid-template-columns:60px 1fr 105px;font-size:32px;padding:17px 0;gap:24px}
+.agenda-item .num{font-size:30px}.agenda-item .duration{font-size:24px;color:var(--red)}
+.agenda-art{left:913px;top:285px;width:725px;height:595px}
+.activities{top:176px;bottom:113px}
+.activities .section-number{margin-bottom:14px}
+.activities h1{font-size:63px;letter-spacing:1px;margin-bottom:20px;line-height:1.3;color:var(--red)}
+.activity-list{width:870px}.activity-row{grid-template-columns:165px 1fr;gap:25px;padding:14px 0;position:relative}
+.activity-row h2{font-size:34px;line-height:1.35;color:var(--ink);font-weight:600}
+.activity-row.feature h2{font-size:40px}.activity-row p{font-size:20px;line-height:1.55;margin-top:8px;color:var(--muted)}
+.activity-date{font-size:25px;line-height:1.55}.activity-date strong{font-size:28px;font-weight:600}
+.fair-art{right:-30px;top:221px;width:700px;height:680px}
+.poster-button{bottom:-20px;right:auto;left:0;font-size:21px;padding:8px 0}
+.upcoming .activity-list{width:900px;max-width:none}.upcoming .activity-row{grid-template-columns:180px 1fr;gap:25px;padding:28px 0}
+.upcoming .activity-row h2{font-size:42px}.upcoming .activity-row p{font-size:26px;margin-top:12px}
+.upcoming-art{left:635px;top:365px;width:1120px;height:630px;mix-blend-mode:multiply}
+
+
+
+.quiz-slide{top:211px;bottom:164px;grid-template-columns:1fr 430px;gap:140px;align-items:center}
+.quiz-slide h1{font-size:96px;color:var(--red);letter-spacing:2px;line-height:1.35}
+.quiz-slide .lead{font-size:37px;line-height:1.7;margin-top:24px;color:var(--ink)}
+.quiz-slide .sublead{font-size:26px;line-height:1.65;margin-top:22px;color:var(--muted)}
+.quiz-entry-art{opacity:.4}.quiz-code{align-self:center;background:var(--white);padding:22px 22px 24px;width:430px}
+.quiz-code img{width:386px;height:386px;border:0;display:block}.quiz-code a{font-size:24px;margin-top:14px}
+.quiz-status{font-size:24px;color:var(--red);margin-top:23px}.quiz-status strong{font-size:52px}
+.deck-controls{background:#fffdf7f2;border-color:#d6c3a4;box-shadow:0 2px 8px #302c2812;padding:4px 8px}
+.deck-controls button img{display:block;width:20px;height:20px;margin:auto}
+.deck-controls #next img{filter:brightness(0) invert(1)}.deck-controls #previous,.deck-controls #next{font-size:inherit}
+.close-dialog img{display:block;width:23px;height:23px;margin:auto}
+.poster-close img{width:22px;height:22px}
+.student-intro-art{display:block;width:100%;height:180px;object-fit:cover;object-position:right 75%;mix-blend-mode:multiply;margin:0 0 28px}
+.student-page .quiz-root:has(.intro),.student-page .quiz-root:has(.waiting),.student-page .quiz-root:has(.complete){padding-top:25px}
+.intro-label{color:var(--red);letter-spacing:1px}
+.student-page .intro h1,.student-page .waiting h1,.student-page .complete h1{color:var(--red);font-weight:700}
+.student-page .waiting-line,.student-page .receipt-line{display:none}
+.option[aria-pressed=true] .option-indicator:after{content:none}
+.option-indicator img{display:none;width:16px;height:16px;filter:brightness(0) invert(1)}
+.option[aria-pressed=true] .option-indicator img{display:block}
+@media(max-width:600px){.student-intro-art{height:145px;margin-bottom:20px}.student-page .quiz-root:has(.intro),.student-page .quiz-root:has(.waiting),.student-page .quiz-root:has(.complete){padding-top:13px}.intro-label{font-size:12px;margin-bottom:12px}.identity-form{margin-top:26px}.intro .lead{margin-top:10px}.waiting h1,.complete h1{margin-top:16px}.deck-controls button img{width:18px;height:18px}}
+/* Match the selected cover's compact title rhythm. */
+.cover-title{font-size:132px;line-height:1.13;margin-top:-33px}
+.cover-title::first-line{font-size:166px;line-height:1.16}
+.cover-bottom{font-size:45px;letter-spacing:7px;margin-top:17px}
+.slide-header .school-name{font-size:28px;font-weight:500;letter-spacing:3px}
+/* Keep text stable on page changes and clear of the presentation footer. */
+.slide{animation:none}
+.support-art,.upcoming-art,.student-intro-art{mix-blend-mode:darken}
+.agenda{top:174px}.agenda h1{margin-bottom:24px}.agenda-item{padding:12px 0}
+.activities{top:166px}.activities h1{margin-bottom:17px}.activity-row{padding:12px 0}
+.poster-button{bottom:-5px}.slide-header .header-date{color:var(--ink)}
+
+/* October 6 presentation revisions: clear sequence and page-specific artwork. */
+.slide-footer[hidden]{display:none}
+.cover-date-line{top:477px}
+.agenda{top:207px;max-width:none;bottom:85px}
+.agenda h1{font-size:76px;margin-bottom:53px}
+.agenda .section-number{margin-bottom:19px}
+.agenda-list{display:grid;width:100%;grid-template-columns:1fr 1fr;column-gap:100px;row-gap:0}
+.agenda-item{grid-template-columns:76px 1fr;font-size:43px;padding:34px 0;gap:21px;min-height:136px}
+.agenda-item .num{font-size:41px}
+.principal{max-width:none;text-align:center;align-items:center;top:230px;bottom:177px}
+.principal .section-number{margin-bottom:48px}
+
+.principal h1{font-size:128px;letter-spacing:6px}
+.ceremony-art,.reflection-art{opacity:1}
+.upcoming .activity-list{width:1000px}
+.stage[data-kind=flag] .header-date,.stage[data-kind=talk] .header-date{display:none}
+
+/* Shared hierarchy: section context, primary message, supporting copy. */
+.section-number{font-size:24px;line-height:1.5;letter-spacing:1px;font-weight:400}
+.section-number span{margin-left:20px;letter-spacing:1px}
+.title-slide:not(.principal){top:254px;bottom:112px;justify-content:flex-start}
+.title-slide:not(.principal) .section-number{margin-bottom:28px}
+.title-slide:not(.principal) h1{font-size:120px;line-height:1.25;letter-spacing:3px}
+.title-slide.talk h1{font-size:100px;line-height:1.35}
+.title-slide:not(.principal) .lead,.title-slide:not(.principal) .speaker{margin-top:30px}
+.agenda{top:194px}
+.agenda h1,.activities h1{font-size:68px;line-height:1.3;letter-spacing:2px}
+.agenda .section-number{margin-bottom:19px}
+.agenda h1{margin-bottom:53px}
+.principal .section-number{margin-bottom:48px}
+
+/* V8: school identity belongs to the cover; inner pages use the full canvas. */
+#slide-content{position:absolute;inset:0}
+.slide-header[hidden]{display:none}
+.stage:not([data-kind=cover]) .slide-header{display:none}
+.title-slide:not(.principal){top:150px}
+.agenda{top:110px}
+.agenda h1{font-size:76px}
+.agenda-item{min-height:148px}
+.community-art{top:116px}
+.upcoming{top:96px;bottom:96px}
+.upcoming h1{margin-bottom:44px}
+.upcoming .activity-row{padding:32px 0}
+.upcoming-art{left:660px;top:270px;width:1100px;height:619px}
+.quiz-slide{top:118px;bottom:136px}
+
+/* P7: one current event above two spacious deadline columns. */
+.stage[data-kind=activities] .activities{top:78px;bottom:52px}
+.stage[data-kind=activities] .activities h1{margin-bottom:46px}
+.stage[data-kind=activities] .activity-list{width:100%}
+.stage[data-kind=activities] .activity-row.feature{width:915px;grid-template-columns:170px 1fr;gap:36px;padding:28px 0 30px}
+.stage[data-kind=activities] .activity-row.feature h2{font-size:48px;line-height:1.3}
+.stage[data-kind=activities] .activity-row.feature p{font-size:26px;line-height:1.65;margin-top:20px}
+.stage[data-kind=activities] .activity-date{font-size:26px;line-height:1.55}
+.stage[data-kind=activities] .activity-date strong{font-size:32px}
+.ongoing-activities{display:grid;grid-template-columns:1fr 1fr;gap:90px;margin-top:40px}
+.stage[data-kind=activities] .ongoing-activities .activity-row{display:block;padding:24px 0 0}
+.stage[data-kind=activities] .ongoing-activities h2{font-size:34px;line-height:1.35;margin-top:14px}
+.stage[data-kind=activities] .ongoing-activities p{font-size:23px;line-height:1.65;margin-top:14px}
+.stage[data-kind=activities] .fair-art{left:1050px;right:auto;top:78px;width:550px;height:450px}
+.stage[data-kind=activities] .poster-button{position:static;display:block;width:max-content;margin-top:34px;font-size:21px}
+
+/* A single restrained reveal follows each page change. */
+@keyframes context-reveal{from{opacity:0}to{opacity:1}}
+@keyframes title-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes copy-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.presentation .reveal-context{animation:context-reveal 240ms ease-out 35ms both}
+.presentation .reveal-title{animation:title-reveal 420ms cubic-bezier(.2,.7,.2,1) 70ms both}
+.presentation .reveal-copy{animation:copy-reveal 320ms ease-out var(--reveal-delay,150ms) both}
+.presentation .reveal-item{animation:copy-reveal 280ms ease-out var(--reveal-delay,130ms) both}
+@media(prefers-reduced-motion:reduce){.presentation .reveal-context,.presentation .reveal-title,.presentation .reveal-copy,.presentation .reveal-item{animation:none}}
+
+/* V10: centered poster, sequential untimed quiz, required survey and independent MC timer. */
+#poster-dialog{margin:auto;inset:0;width:fit-content;max-width:calc(100vw - 64px);height:fit-content;max-height:calc(100dvh - 48px);padding:0;border:0;overflow:hidden;background:transparent}
+#poster-dialog>img{display:block;width:auto;height:auto;max-width:calc(100vw - 64px);max-height:calc(100dvh - 48px);object-fit:contain;margin:0 auto}
+#poster-dialog .poster-close{position:fixed;top:12px;right:12px}
+.class-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.class-buttons button{min-height:51px;background:var(--white);border:1px solid var(--line);border-radius:5px;font-size:18px}
+.class-buttons button[aria-pressed=true]{background:var(--red);color:white;border-color:var(--red)}
+.question-tabs{gap:8px;flex-wrap:wrap}.question-tab{flex-shrink:0;min-height:40px;width:40px}.survey-tab{width:66px;border-radius:22px}
+.step-hint{font-size:13px;color:var(--gold)}.question-tabs button:disabled{opacity:.4;background:transparent;border-style:dashed}
+.student-page .quiz-root:has(.survey){max-width:1160px;padding-top:28px}
+.survey .question-tabs{margin-bottom:24px}.survey-heading{display:flex;justify-content:space-between;align-items:center;gap:28px;margin-bottom:26px}
+.survey-heading h1{font-size:40px;color:var(--red);line-height:1.3}.survey-heading>p{font-size:15px;line-height:1.8;color:var(--muted)}
+.survey-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.survey-card{margin:0;min-width:0;padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--white)}
+.survey-card legend{float:left;width:100%;padding:0;font-size:18px;line-height:1.65;font-weight:600;margin-bottom:18px;min-height:60px}
+.survey-options{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.survey-options button{border:1px solid var(--line);border-radius:6px;min-height:48px;padding:10px 6px;font-size:16px}
+.survey-options button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:white}
+.survey .quiz-navigation{margin-top:24px}.survey-progress{font-size:13px;color:var(--muted);margin-top:16px}
+.admin-survey{margin-top:32px}.admin-survey h2{font-size:26px;color:var(--red)}.admin-survey p{margin:14px 0;line-height:1.7}.admin-survey td:first-child{min-width:280px;max-width:400px;white-space:normal;line-height:1.7}
+.stage[data-kind=quiz] .quiz-slide{top:96px;bottom:105px;grid-template-columns:1fr 430px;gap:100px}
+.stage[data-kind=quiz] .quiz-slide .section-number{margin-bottom:24px}
+.stage[data-kind=quiz] .quiz-slide h1{font-size:88px;line-height:1.3}
+.stage[data-kind=quiz] .quiz-slide .lead{font-size:32px;margin-top:22px;line-height:1.65}
+.stage[data-kind=quiz] .quiz-slide .sublead{font-size:25px;margin-top:14px;line-height:1.65}
+.presentation-timer{margin-top:26px}.countdown-label{font-size:22px;color:var(--gold);letter-spacing:2px}.countdown-value{font-family:'Assembly Serif TC','Noto Serif TC Complete','Songti TC','PMingLiU',serif;font-size:94px;line-height:1.2;letter-spacing:3px;font-variant-numeric:tabular-nums;color:var(--red);margin:5px 0 12px}.timer-ended{color:var(--muted)}
+.timer-controls{display:flex;gap:12px}.timer-controls button{padding:12px 24px;border:1px solid var(--gold);border-radius:8px;min-height:51px;font-size:22px}.timer-controls .timer-start{background:var(--red);border-color:var(--red);color:white}.timer-note{font-size:18px;line-height:1.65;color:var(--muted);margin-top:16px}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.class-buttons button{min-height:48px}.question-tabs{gap:6px}.question-tab{width:34px;min-height:38px;height:38px}.survey-tab{width:56px}.survey-grid{grid-template-columns:1fr;gap:16px}.survey-heading{display:block;margin-bottom:22px}.survey-heading h1{font-size:32px}.survey-heading>p{margin-top:12px;font-size:14px}.survey-card{padding:18px}.survey-card legend{font-size:17px;min-height:0}.survey-options button{min-height:48px;font-size:15px}.survey .quiz-navigation{flex-direction:column}.student-page .quiz-root:has(.survey){padding-top:24px}#poster-dialog{max-width:calc(100vw - 32px)}#poster-dialog>img{max-width:calc(100vw - 32px)}}
+@media(min-width:900px){
+ .student-page:has(.survey) .student-header{padding:14px 32px}
+ .student-page .quiz-root:has(.survey){padding-top:16px;padding-bottom:24px}
+ .survey .question-top{position:static;padding:0;margin-bottom:12px}
+ .survey .question-tabs{margin-bottom:14px}.survey .question-tab{height:34px;min-height:34px}
+ .survey-heading{margin-bottom:16px}.survey-heading .question-kind{margin-bottom:6px}.survey-heading h1{font-size:34px}.survey-heading>p{font-size:14px}
+ .survey-grid{gap:16px}.survey-card{padding:16px}.survey-card legend{font-size:17px;line-height:1.55;min-height:42px;margin-bottom:12px}
+ .survey-options button{min-height:40px;padding:8px 6px;font-size:15px}
+ .survey .quiz-navigation{margin-top:16px}.survey-progress{margin-top:8px}.survey .save-status{margin-top:8px}
+}
