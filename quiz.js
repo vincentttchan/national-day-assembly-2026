@@ -4,11 +4,15 @@ let gasToken='';
 try{gasToken=localStorage.getItem(gasTokenKey)||'';}catch{}
 if(!gasToken){gasToken=crypto.randomUUID()+crypto.randomUUID();try{localStorage.setItem(gasTokenKey,gasToken);}catch{}}
 async function gasApi(path,value){
- const result=await new Promise((resolve,reject)=>{
-  google.script.run.withSuccessHandler(resolve).withFailureHandler(()=>reject(new Error('連線暫時中斷，請稍後重試；答案會保留於此裝置。'))).quizApi({path,value:value===undefined?null:value,token:gasToken});
- });
- if(!result.ok)throw new Error(result.error||'暫時未能儲存，請稍後重試。');
- return result.data;
+ for(let attempt=0;attempt<4;attempt++){
+  try{
+   const result=await new Promise((resolve,reject)=>{
+    google.script.run.withSuccessHandler(resolve).withFailureHandler(()=>reject(new Error('連線暫時中斷，請稍後重試；答案會保留於此裝置。'))).quizApi({path,value:value===undefined?null:value,token:gasToken});
+   });
+   if(!result.ok){const issue=new Error(result.error||'暫時未能儲存，請稍後重試。');issue.validation=!/較多作答|too many|quota|暫時|try again/i.test(issue.message);throw issue;}
+   return result.data;
+  }catch(issue){if(issue.validation||attempt===3)throw issue;await new Promise(resolve=>setTimeout(resolve,(1000+Math.random()*1500)*2**attempt));}
+ }
 }
 const root = document.querySelector('#quiz-root');
 let identity=null, questions=[], surveyQuestions=[], surveyOptions=[], answers=[], survey=[null,null,null,null];

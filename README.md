@@ -4,6 +4,12 @@
 
 網站：https://vincentttchan.github.io/national-day-assembly-2026/
 
+學生入口：https://vincentttchan.github.io/national-day-assembly-2026/quiz.html
+
+教師統計：https://docs.google.com/spreadsheets/d/1EM_urcxtm2tnN0VNneoZ37Kez71UJz1zFxnN7JqWpxE/edit （只供擁有人存取，沒有公開共用）。
+
+已於2026年10月2日完成GitHub Pages及學校Apps Script正式部署。使用獨立的驗證表完成七題、四項問卷、重新載入續答及實際提交，確認Google Sheets收到一筆完整作答、七分制得分及全部問卷選項；正式服務接回空白統計表。驗證表的測試紀錄不在正式統計內。此輪沒有進行600部實體裝置或校園網絡承載測試。
+
 10頁16:9簡報，包括升旗禮、歡迎家長代表、校長訓勉、專題短講、活動宣傳及班際小遊戲。方向鍵換頁；F全螢幕；P流程；H控制列。第9頁提供獨立3分鐘司儀計時器，學生不限時。
 
 學生選擇S1–S6、A/B/C/D及學號，依次完成七題及同頁四項必答問卷。只有選好上一題才解鎖下一題，不揭曉答案或分數。學生作答透過Apps Script HTML Service和google.script.run收集到教師私人Google Sheets；資料、答案鍵及帳戶憑證不放在GitHub。
