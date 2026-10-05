@@ -57,8 +57,9 @@ function quizApi(request) {
       if(!findRecord_(sheet,hash)) throw new Error('請先選擇級別、班別及學號。');
       return {ok:true,data:CONTENT_};
     }
-    const lock=LockService.getScriptLock();
-    if(!lock.tryLock(20000)) throw new Error('正在處理較多作答，請稍後重試。');
+    // Registration and final submission are serialized. Drafts belong to separate rows.
+    const lock=path==='save'?null:LockService.getScriptLock();
+    if(lock&&!lock.tryLock(20000)) throw new Error('正在處理較多作答，請稍後重試。');
     try {
       const found=findRecord_(sheet,hash), value=request.value||{};
       if(path==='join') {
@@ -91,9 +92,14 @@ function quizApi(request) {
         for(let i=0;i<7;i++)values[9+i]=answers[i].map(x=>String.fromCharCode(65+x)).join(',');
         for(let i=0;i<4;i++)values[16+i]=CONTENT_.survey_options[survey[i]];
       }
-      sheet.getRange(found.row,1,1,HEADERS_.length).setValues([values]);
+      if(path==='save') {
+        // A delayed draft can never overwrite the receipt, score or submitted answers.
+        sheet.getRange(found.row,7,1,2).setValues([[values[6],values[7]]]);
+      } else {
+        sheet.getRange(found.row,6,1,15).setValues([values.slice(5)]);
+      }
       return {ok:true,data:{submitted:!!values[5]}};
-    } finally { lock.releaseLock(); }
+    } finally { if(lock)lock.releaseLock(); }
   } catch(e) { return {ok:false,error:String(e.message||'暫時未能完成操作，請重試。')}; }
 }
 

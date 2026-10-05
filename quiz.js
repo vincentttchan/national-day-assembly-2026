@@ -83,7 +83,7 @@ async function refresh(){
  if(!questions.length){const content=await api('questions');questions=content.questions;surveyQuestions=content.survey;surveyOptions=content.survey_options;}
  if(!loadedIdentity){loadedIdentity=true;answers=identity.answers;survey=identity.survey;try{const draft=JSON.parse(localStorage.getItem(localKey)||'null');if(draft?.identity===identityKey()&&validDraft(draft)){answers=draft.answers;survey=draft.survey;localDirty=true;}}catch{}index=firstMissing();renderStep();}
  if(localDirty&&!busy)scheduleSave();
- }catch(e){if(!screen){root.innerHTML=`<section class="intro">${heading()}<h1>暫時未能連接</h1><p class="notice">請檢查網絡，頁面會自動重試。</p><p id="quiz-error" class="error" role="alert"></p></section>`;}error(e.message);}finally{refreshing=false;}
+ }catch(e){if(!screen){root.innerHTML=`<section class="intro">${heading()}<h1>暫時未能連接</h1><p class="notice">請檢查網絡後，再按下方按鈕。</p><button type="button" class="primary" id="retry-connection">重新連接</button><p id="quiz-error" class="error" role="alert"></p></section>`;}error(e.message);root.querySelector("#retry-connection")?.addEventListener("click",()=>refresh(),{once:true});}finally{refreshing=false;}
 }
 function poll(){refresh().finally(()=>{if(!completed)setTimeout(poll,4500+Math.random()*1000);});}
 if(window.NATIONAL_DAY_SITE?.mode==='github'){
@@ -92,3 +92,4 @@ if(window.NATIONAL_DAY_SITE?.mode==='github'){
  else root.innerHTML='<section class="intro">'+heading()+'<h1>作答服務準備中</h1><p class="notice">問答收集服務尚未啟用，請稍後再進入。</p><a class="secondary" href="index.html#8">返回早會簡報</a></section>';
 }else if(window.NATIONAL_DAY_GAS){refresh();}else{poll();}
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+ window.addEventListener('online',()=>{if(!completed)refresh();});
