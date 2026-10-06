@@ -110,7 +110,14 @@ async function submit(){
  try{if(!await flushSave())throw new Error('尚未完成儲存，請檢查網絡後重新提交。');await api('submit',{answers,survey});completed=true;try{localStorage.removeItem(localKey);}catch{}renderComplete();}
  catch(e){error(e.message);b.textContent='重新提交';}finally{busy=false;updateNavigation();}
 }
-function renderComplete(){screen='complete';root.innerHTML=`<section class="complete">${heading()}<h1>已收到你的答案</h1><p>謝謝參與國慶特別早會。<br>你可以關閉此頁面。</p><p class="receipt">${escapeText(`S${identity.grade}${identity.class}　學號 ${String(identity.number).padStart(2,'0')}`)}</p></section>`;}
+function renderComplete(){
+ screen='complete';root.innerHTML=`<section class="complete">${heading()}<h1>已收到你的答案</h1><p>謝謝參與國慶特別早會。<br>你可以關閉此頁面。</p><p class="receipt">${escapeText(`S${identity.grade}${identity.class}　學號 ${String(identity.number).padStart(2,'0')}`)}</p>${window.NATIONAL_DAY_SITE?.mode==='anonymous'?'<button class="secondary" id="next-student">另一位同學作答</button>':''}</section>`;
+ root.querySelector('#next-student')?.addEventListener('click',()=>{
+  clearTimeout(saveTimer);identity=null;anonymousStudent=null;completed=false;loadedIdentity=false;localDirty=false;grade=0;classroom='';index=0;answers=[];survey=[null,null,null,null];
+  gasToken=crypto.randomUUID()+crypto.randomUUID();try{localStorage.removeItem('national-day-anonymous-identity-v1');localStorage.removeItem(localKey);localStorage.setItem(gasTokenKey,gasToken);}catch{}
+  document.querySelector('#student-identity').textContent='';renderJoin();
+ });
+}
 function validDraft(d){return Array.isArray(d?.answers)&&d.answers.length===questions.length&&d.answers.every((a,i)=>Array.isArray(a)&&(!questions[i].multiple?a.length<=1:true)&&new Set(a).size===a.length&&a.every(n=>Number.isInteger(n)&&n>=0&&n<questions[i].options.length))&&Array.isArray(d.survey)&&d.survey.length===4&&d.survey.every(x=>x===null||Number.isInteger(x)&&x>=0&&x<4);}
 async function refresh(){
  if(refreshing)return;refreshing=true;
