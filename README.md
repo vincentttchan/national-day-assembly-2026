@@ -2,9 +2,9 @@
 
 2026年10月6日 · 樂善堂梁銶琚書院 · 司儀：陳浩賢老師。
 
-- 簡報：https://vincentttchan.github.io/national-day-assembly-2026/
-- 學生入口：https://vincentttchan.github.io/national-day-assembly-2026/quiz.html
-- 教師統計：https://vincentttchan.github.io/national-day-assembly-2026/admin.html （需要私人老師存取碼）
+- 簡報：https://lkkc-nationalday-2026.vercel.app/
+- 學生入口：https://lkkc-nationalday-2026.vercel.app/quiz.html
+- 教師統計：https://lkkc-nationalday-2026.vercel.app/admin.html （需要私人老師存取碼）
 
 ## 10月6日免登入後台
 
