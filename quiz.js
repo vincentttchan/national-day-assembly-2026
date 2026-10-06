@@ -20,7 +20,44 @@ let index=0, screen='', grade=0, classroom='', busy=false, completed=false, load
 let localDirty=false, saveTimer=null, savePromise=Promise.resolve();
 const localKey='national-day-2026-gas-draft-v10';
 const escapeText=value=>String(value).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+let anonymousStudent=null;
+function persistIdentity(student){anonymousStudent=student;try{localStorage.setItem('national-day-anonymous-identity-v1',JSON.stringify(student));}catch{}}
+async function anonymousApi(path,value){
+ const key='national-day-anonymous-identity-v1';
+ if(path==='questions')return window.NATIONAL_DAY_QUIZ_CONTENT;
+ if(path==='state'){
+  let saved=null;try{saved=JSON.parse(localStorage.getItem(key)||'null');}catch{}
+  anonymousStudent=saved||anonymousStudent;return {student:anonymousStudent};
+ }
+ if(path==='join'){
+  if(!Number.isInteger(value.grade)||value.grade<1||value.grade>6||!['A','B','C','D'].includes(value.class)||!Number.isInteger(value.number)||value.number<1||value.number>99)throw new Error('請選擇有效的級別、班別及學號。');
+  const student={...value,submitted:false,answers:Array.from({length:7},()=>[]),survey:[null,null,null,null]};
+  persistIdentity(student);return {student};
+ }
+ if(path==='save'){
+  identity={...identity,...value};persistIdentity(identity);return {submitted:false};
+ }
+ if(path==='submit'){
+  for(let attempt=0;attempt<4;attempt++){
+   const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),45000);
+   try{
+    const response=await fetch(window.NATIONAL_DAY_SITE.apiUrl+'/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:gasToken,identity:{grade:identity.grade,class:identity.class,number:identity.number},...value}),signal:controller.signal});
+    const result=await response.json();
+    if(!response.ok||!result.ok){const issue=new Error(result.error||'暫時未能提交，答案已保留，請稍後重試。');issue.validation=response.status>=400&&response.status<500&&response.status!==429;throw issue;}
+    if(!result.data?.receipt||result.data.submitted!==true)throw new Error('未能確認提交，答案已保留，請再試。');
+    identity={...identity,...value,submitted:true,receipt:result.data.receipt};persistIdentity(identity);return result.data;
+   }catch(e){
+    if(e.validation)throw e;
+    if(attempt===3)throw new Error('網絡暫時中斷，答案已保留，請再按提交。');
+   }finally{clearTimeout(timeout);}
+   savedStatus('連線暫時繁忙，正在重新提交；請保持此頁面開啟。');
+   await new Promise(resolve=>setTimeout(resolve,(1000+Math.random()*1500)*2**attempt));
+  }
+ }
+ throw new Error('無效操作。');
+}
 async function api(path,value){
+ if(window.NATIONAL_DAY_SITE?.mode==='anonymous')return anonymousApi(path,value);
  if(window.NATIONAL_DAY_GAS){return gasApi(path,value);}
  const controller=new AbortController(), timeout=setTimeout(()=>controller.abort(),10000);let response;
  try{response=await fetch(`api/${path}`,{signal:controller.signal,...(value===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(value)})});}
@@ -63,7 +100,7 @@ function stash(){try{localStorage.setItem(localKey,JSON.stringify({identity:iden
 function snapshot(){return JSON.stringify({answers,survey});}
 function queueSave(){
  clearTimeout(saveTimer);if(completed||!localDirty)return savePromise;
- const data=snapshot();savePromise=savePromise.catch(()=>false).then(async()=>{if(completed)return true;try{const result=await api('save',JSON.parse(data));if(snapshot()===data){localDirty=false;savedStatus('答案已儲存');}if(result.submitted){completed=true;renderComplete();}return true;}catch(e){savedStatus('答案暫存於此裝置；連線恢復後會重試。');error(e.message);return false;}});return savePromise;
+ const data=snapshot();savePromise=savePromise.catch(()=>false).then(async()=>{if(completed)return true;try{const result=await api('save',JSON.parse(data));if(snapshot()===data){localDirty=false;savedStatus(window.NATIONAL_DAY_SITE?.mode==='anonymous'?'答案已暫存，完成問卷後請提交。':'答案已儲存');}if(result.submitted){completed=true;renderComplete();}return true;}catch(e){savedStatus('答案暫存於此裝置；連線恢復後會重試。');error(e.message);return false;}});return savePromise;
 }
 function scheduleSave(){clearTimeout(saveTimer);savedStatus('正在儲存答案……');saveTimer=setTimeout(queueSave,2500);}
 async function flushSave(){clearTimeout(saveTimer);await savePromise;return localDirty?await queueSave():true;}
@@ -90,6 +127,6 @@ if(window.NATIONAL_DAY_SITE?.mode==='github'){
  const url=window.NATIONAL_DAY_SITE.quizUrl;
  if(/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(url||'')){location.replace(url);}
  else root.innerHTML='<section class="intro">'+heading()+'<h1>作答服務準備中</h1><p class="notice">問答收集服務尚未啟用，請稍後再進入。</p><a class="secondary" href="index.html#8">返回早會簡報</a></section>';
-}else if(window.NATIONAL_DAY_GAS){refresh();}else{poll();}
+}else if(window.NATIONAL_DAY_GAS||window.NATIONAL_DAY_SITE?.mode==='anonymous'){refresh();}else{poll();}
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
  window.addEventListener('online',()=>{if(!completed)refresh();});

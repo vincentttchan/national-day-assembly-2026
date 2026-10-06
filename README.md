@@ -2,20 +2,28 @@
 
 2026年10月6日 · 樂善堂梁銶琚書院 · 司儀：陳浩賢老師。
 
-網站：https://vincentttchan.github.io/national-day-assembly-2026/
+- 簡報：https://vincentttchan.github.io/national-day-assembly-2026/
+- 學生入口：https://vincentttchan.github.io/national-day-assembly-2026/quiz.html
+- 教師統計：https://vincentttchan.github.io/national-day-assembly-2026/admin.html （需要私人老師存取碼）
 
-學生入口：https://vincentttchan.github.io/national-day-assembly-2026/quiz.html
+## 10月6日免登入後台
 
-教師統計：https://docs.google.com/spreadsheets/d/1EM_urcxtm2tnN0VNneoZ37Kez71UJz1zFxnN7JqWpxE/edit （只供擁有人存取，沒有公開共用）。
+學生頁面直接由GitHub Pages載入，沒有Google登入或年齡檢查。S1–S6、A/B/C/D及學號，七題逐題解鎖，最後同頁完成四項必答問卷。作答中不向伺服器輪詢或逐題寫入；草稿暫存於同一瀏覽器，完成後一次提交至Supabase Edge Function及Postgres。學生不會取得答案鍵或得分。
 
-已於2026年10月2日完成GitHub Pages及學校Apps Script正式部署。使用獨立的驗證表完成七題、四項問卷、重新載入續答及實際提交，確認Google Sheets收到一筆完整作答、七分制得分及全部問卷選項；正式服務接回空白統計表。驗證表的測試紀錄不在正式統計內。此輪沒有進行600部實體裝置或校園網絡承載測試。
+後台驗證七題及四項問卷完整性，伺服器計分；資料庫唯一約束避免同一班別學號重複計入，同一提交的網絡重試回傳相同收據。學生頁面有45秒請求等待及最多四次提交嘗試，失敗保留答案並可再按提交。成功收到伺服器收據才顯示完成。
 
-10頁16:9簡報，包括升旗禮、歡迎家長代表、校長訓勉、專題短講、活動宣傳及班際小遊戲。方向鍵換頁；F全螢幕；P流程；H控制列。第9頁提供獨立3分鐘司儀計時器，學生不限時。
+教師存取碼只在私人本機交付檔案；資料庫只儲存其SHA-256雜湊。教師頁面在記憶體持有存取碼，支援級別及班別篩選、每班提交數及七分制平均分、四項問卷選項人數、完整紀錄CSV匯出。統計只計成功提交，不包含尚在裝置作答的學生。資料表啟用RLS，沒有匿名讀取政策；資料表及提交RPC撤銷anon/authenticated權限，僅伺服器service_role可存取。service_role只使用Edge Function環境變數。Edge Function的stats及QA路由驗證私人教師存取碼，學生submit路由按需求提供免登入收集。私人答案鍵及教師存取碼不在此repo。
 
-學生選擇S1–S6、A/B/C/D及學號，依次完成七題及同頁四項必答問卷。只有選好上一題才解鎖下一題，不揭曉答案或分數。學生作答透過Apps Script HTML Service和google.script.run收集到教師私人Google Sheets；資料、答案鍵及帳戶憑證不放在GitHub。
+原有Google Sheets紀錄保留： https://docs.google.com/spreadsheets/d/1EM_urcxtm2tnN0VNneoZ37Kez71UJz1zFxnN7JqWpxE/edit 。原有紀錄未自動匯入新後台；教師頁面提供舊表連結。既有GAS部署保留作舊資料來源，不再用作GitHub學生入口。
 
-`site-config.js`設定Apps Script `/exec`作答網址及私人試算表網址。未設定時，入口會明確顯示服務尚未啟用，不會假裝提交成功。`apps-script/Code.gs`為後台範本，須在Script Properties設定ANSWER_KEY，並由學校帳戶部署；實際授權與網址以本次部署結果為準。
+## 驗證及實際限制
 
-草稿存在學生的同一瀏覽器及Google Sheets；重新進入可繼續。提交具重複檢查。試算表包含登記／提交數、每班平均得分及四項問卷選項人數，各級分頁處理。後台試算表維持私人權限，學生只可執行受限制的作答方法。Apps Script有配額及並行限制，正式活動需作學校網絡及多裝置試演。
+2026年10月6日對真正部署的API進行三輪700份同時啟動提交測試，各輪700份全部成功，逐筆核對伺服器分數、七題答案、四項問卷及24班。第三輪約34.3秒，42份首次503後自動重試成功；未出現重複或遺漏。測試紀錄以test=true隔離，不混入正式統計。另以瀏覽器驗證逐題解鎖、重新載入續答、四項問卷必答、完整提交收據、按級班統計及實際CSV下載。700份測試由單一測試來源發出，不能代替校園Wi-Fi及700部實體裝置測試；集中提交可能需等待及重試。
 
-字型與圖示授權見assets/OFL-NotoSansTC.txt、OFL-NotoSerifTC.txt及LICENSE-Tabler.txt。插畫採用最新白色企領、彩色前中飾帶、男生深藍長褲及女生寶藍過膝裙版本；網站沒有附上學生參考照片。
+Supabase建立時組織回報新專案費用US$0/月，仍受方案配額約束。資料庫位於新加坡。
+
+## 簡報
+
+10頁16:9簡報，包括升旗禮、歡迎家長代表、校長訓勉、專題短講、活動宣傳及班際小遊戲。方向鍵換頁；F全螢幕；P流程；H控制列。第9頁提供獨立3分鐘司儀計時器，學生不限時。QR碼的GitHub入口保持不變。
+
+字型與圖示授權見assets/OFL-NotoSansTC.txt、OFL-NotoSerifTC.txt及LICENSE-Tabler.txt。插畫採用白色企領、彩色前中飾帶、男生深藍長褲及女生寶藍過膝裙；網站沒有附上學生參考照片。
